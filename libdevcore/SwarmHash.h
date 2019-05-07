@@ -26,7 +26,15 @@
 namespace dev
 {
 
-/// Compute the "swarm hash" of @a _input
+/// Compute the "swarm hash" of @a _input (OLD 0x1000-section version)
 h256 swarmHash(std::string const& _input);
+
+/// Comput the "bzz hash" of @a _input (the NEW binary / BMT version)
+h256 bzzHash(bytes const& _input);
+
+inline h256 bzzHash(std::string const& _input)
+{
+	return bzzHash(asBytes(_input));
+}
 
 }
