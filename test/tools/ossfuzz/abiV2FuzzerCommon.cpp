@@ -9,10 +9,7 @@ SolidityCompilationFramework::SolidityCompilationFramework(langutil::EVMVersion 
 
 dev::bytes SolidityCompilationFramework::compileContract(std::string const& _sourceCode)
 {
-	// Silence compiler version warning
-	std::string sourceCode = "pragma solidity >=0.0;\n";
-	sourceCode += "pragma experimental ABIEncoderV2;\n";
-	sourceCode += _sourceCode;
+	std::string sourceCode = _sourceCode;
 	m_compiler.setSources({{"", sourceCode}});
 	m_compiler.setEVMVersion(m_evmVersion);
 	m_compiler.setOptimiserSettings(m_optimiserSettings);
